@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>GrainUp — Laboratorio di cucina digitale</title>
+<style>
+:root{--bg:#faf5ea;--pan:#efe3cc;--sage:#6f8a66;--terra:#b9552d;--ink:#2d2d2f;--card:#fffaf0;--line:#d9c9a8;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f1d1a;--pan:#2e2a24;--sage:#9bb392;--terra:#e58a63;--ink:#f1ebe0;--card:#27241f;--line:#4a4338;--on:#1f1d1a}}
+*{box-sizing:inherit}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3,.logo{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0 0 .5rem}
+a{color:inherit}main{max-width:1180px;margin:0 auto;padding:1rem}
+nav{display:flex;flex-wrap:wrap;gap:.25rem 1rem;align-items:center;padding:.75rem 1rem;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+nav .logo{font-size:1.5rem;font-weight:700;text-decoration:none;margin-right:auto}nav a.l{text-decoration:none;padding:.4rem .2rem}nav a.l:hover{color:var(--terra)}
+button,.btn{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.55rem 1.1rem;text-decoration:none;display:inline-block;transition:transform .15s}
+button:hover,.btn:hover{transform:translateY(-1px)}button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.pri{background:var(--terra);color:var(--on);border-color:var(--terra);font-weight:600}.sec{background:var(--sage);color:var(--on);border-color:var(--sage)}
+:focus-visible{outline:3px solid var(--terra);outline-offset:2px}
+input,select{font:inherit;padding:.6rem .9rem;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding:2rem 0}.hero h1{font-size:clamp(2rem,5vw,3.4rem)}
+.big{background:var(--pan);border-radius:28px;padding:1.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;font-size:3.4rem;text-align:center;box-shadow:0 10px 30px #0002}
+.srch{display:flex;gap:.5rem;margin:1rem 0;flex-wrap:wrap}.srch input{flex:1;min-width:200px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1rem;box-shadow:0 4px 14px #0001;text-decoration:none;display:block}
+.card .ph{font-size:4rem;background:var(--pan);border-radius:14px;text-align:center;padding:.6rem;margin-bottom:.6rem}
+.tag{display:inline-block;font-size:.8rem;border:1px solid var(--line);border-radius:999px;padding:.1rem .6rem;margin:.1rem .2rem .1rem 0;background:var(--bg)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0 1.5rem}.chips span{opacity:.5}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1rem 0}.steps div{background:var(--pan);border-radius:20px;padding:1.2rem}
+.cta{background:var(--sage);color:var(--on);border-radius:28px;padding:2rem;text-align:center;margin:2rem 0}
+.bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.5rem 0 1rem}.bar b{font-size:1.1rem}
+.lab{display:grid;grid-template-columns:1fr 330px;gap:1rem;align-items:start}
+.table{background:var(--pan);border:1px solid var(--line);border-radius:28px;padding:1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;min-height:340px;box-shadow:inset 0 2px 12px #0002}
+.tile{display:flex;flex-direction:column;align-items:center;gap:.2rem;border-radius:50% 50% 24px 24px/30% 30% 24px 24px;border-radius:24px;padding:1rem .6rem;min-height:170px;background:var(--card);box-shadow:0 8px 18px #0003;text-align:center}
+.tile .ph{font-size:3.6rem;line-height:1.1}.tile.chg{outline:3px solid var(--sage)}.tile.pop{animation:pop .45s}
+@keyframes pop{0%{transform:scale(.85)}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.tile.pop{animation:none}}
+aside.sum{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1rem;position:sticky;top:64px}
+aside ul,.rc ul{padding-left:1.1rem;margin:.3rem 0}.warn{background:#e9b94a33;border-left:4px solid var(--terra);padding:.5rem .7rem;border-radius:8px;margin:.4rem 0;font-size:.92rem}
+table.n{width:100%;border-collapse:collapse;font-size:.9rem}table.n td,table.n th{padding:.2rem .3rem;border-bottom:1px solid var(--line);text-align:right}table.n td:first-child,table.n th:first-child{text-align:left}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--bg);border-left:1px solid var(--line);box-shadow:-10px 0 30px #0004;z-index:20;overflow:auto;padding:1rem;padding-top:calc(1rem + env(safe-area-inset-top,0px))}
+.alts{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin:1rem 0}.alt{display:flex;flex-direction:column;align-items:center;border-radius:16px;padding:.6rem .3rem;font-size:.82rem;min-height:92px}.alt .ph{font-size:2rem}.alt[aria-pressed="true"]{border:3px solid var(--terra)}
+.detail{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:.8rem}
+.toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:.7rem 1.2rem;border-radius:999px;z-index:30}
+.rc li{margin:.35rem 0}.note{font-size:.85rem;opacity:.8}.step-n{color:var(--terra);font-size:.9rem}
+@media(max-width:820px){.hero,.lab{grid-template-columns:1fr}aside.sum{position:static}.drawer{top:auto;height:88vh;border-radius:24px 24px 0 0;width:100%}}
+@media print{nav,.np,.toast{display:none!important}body{background:#fff;color:#000}}
+</style></head><body>
+<nav aria-label="Principale"><a class="logo" href="#home">🌾 GrainUp</a><a class="l" href="#home">Home</a><a class="l" href="#esplora">Esplora ricette</a><a class="l" href="#lab">Il laboratorio</a><a class="l" href="#mie">Le mie ricette</a><a class="l" href="#esplora" aria-label="Cerca">🔍</a></nav>
+<main id="app"></main><div id="live" role="status" aria-live="polite"></div>
+<script>
+// ===== CATALOGO: [nome, emoji, gruppo, [kcal,prot,carb,zuccheri,grassi,saturi,fibre per 100 g], descrizione, immagine opzionale (URL)] =====
+const I={
+f00:["Farina 00","🌾","farina",[340,10,76,1,1,.2,3],"Contiene glutine, neutra, assorbimento medio."],
+fint:["Farina integrale","🌾","farina",[340,13,64,2,2.5,.4,10],"Con glutine e molte fibre; assorbe più liquidi, sapore rustico."],
+friso:["Farina di riso","🍚","farina",[350,7,80,.1,1,.3,2],"Senza glutine, assorbimento basso: impasti più fragili."],
+fmand:["Farina di mandorle","🌰","farina",[600,21,10,4,53,4,10],"Senza glutine, ricca di grassi, impasto denso. Allergene: frutta a guscio."],
+favena:["Farina di avena","🥣","farina",[370,13,60,1,7,1.2,10],"Tracce di glutine, sapore dolce di cereale, assorbe molto."],
+latte:["Latte intero","🥛","latte",[64,3.3,4.8,4.8,3.6,2.3,0],"Allergene: latte. Riferimento della ricetta."],
+soia:["Bevanda di soia","🫘","latte",[40,3.3,2.5,2,1.8,.3,.5],"Più proteica delle altre vegetali. Allergene: soia."],
+avenab:["Bevanda di avena","🌾","latte",[45,1,8,4,1.5,.2,.8],"Dolce naturalmente, più zuccheri, poche proteine."],
+mandb:["Bevanda di mandorla","🌰","latte",[24,.8,2.5,2,1.1,.1,.2],"Leggera e povera di proteine. Allergene: frutta a guscio."],
+lsl:["Latte senza lattosio","🥛","latte",[47,3.4,4.9,4.9,1.6,1,0],"Latte con lattosio scisso (qui semiscremato)."],
+uovo:["Uova intere","🥚","uova",[143,12.5,.7,.4,9.5,3,0],"Legano, danno struttura e aiutano la lievitazione. 1 uovo ≈ 50 g."],
+lino:["Gel di semi di lino","🌱","uova",[55,2,3,0,4.2,.4,3.5],"Lega e dà umidità, ma non fa montare."],
+chia:["Gel di semi di chia","🌱","uova",[50,1.8,4,0,3.2,.3,3.5],"Lega e dà umidità, struttura più compatta."],
+mela:["Purea di mela","🍎","uova",[45,.2,11,10,.1,0,1.2],"Aggiunge umidità e dolcezza, non struttura."],
+banana:["Banana schiacciata","🍌","uova",[89,1.1,23,12,.3,.1,2.6],"Lega e umidifica, sapore marcato."],
+zucchero:["Zucchero semolato","🍬","zucchero",[400,0,100,100,0,0,0],"Neutro, favorisce doratura e struttura."],
+canna:["Zucchero di canna","🟤","zucchero",[390,0,98,97,0,0,0],"Note di caramello, leggermente più umido."],
+miele:["Miele","🍯","zucchero",[304,.3,82,82,0,0,0],"Liquido, più dolcificante, scurisce in fretta."],
+acero:["Sciroppo d’acero","🍁","zucchero",[260,0,67,60,0,0,0],"Liquido, sapore caratteristico."],
+burro:["Burro","🧈","grasso",[717,.9,.1,.1,81,51,0],"Sapore e friabilità; contiene lattosio."],
+evo:["Olio extravergine d’oliva","🫒","grasso",[884,0,0,0,100,14,0],"Sapore deciso, impasti più umidi."],
+semi:["Olio di semi","🌻","grasso",[884,0,0,0,100,10,0],"Neutro, impasti più umidi e morbidi."],
+cocco:["Olio di cocco","🥥","grasso",[862,0,0,0,100,87,0],"Solido a temperatura ambiente, sapore di cocco."],
+marg:["Margarina vegetale","🧈","grasso",[717,0,0,0,80,30,0],"Alternativa vegetale al burro."],
+lievito:["Lievito per dolci","✨","lievito",[60,0,14,0,0,0,0],"Agente lievitante chimico."],
+fond:["Cioccolato fondente","🍫","ciocc",[540,6,46,38,35,21,11],"Intenso, poco zucchero rispetto al latte."],
+ciol:["Cioccolato al latte","🍫","ciocc",[535,8,59,55,30,18,3],"Più dolce e morbido."],
+cacao:["Cacao amaro","🟫","ciocc",[230,20,10,2,14,8,33],"Non contiene burro di cacao in quantità: comportamento diverso."]};
+const GN={farina:"Farina",latte:"Latte",uova:"Uova",zucchero:"Zucchero",grasso:"Burro / grasso",lievito:"Lievito",ciocc:"Cioccolato"};
+// ===== REGOLE DI SOSTITUZIONE (cat. ricetta, da, a, fattore, livello, avviso, nota nel procedimento, g per unità originale) =====
+const r=(c,f,t,k,l,w,sn,pu)=>({c,f,t,k,l,w,sn,pu});
+const R=[
+r("pancake torta biscotti","f00","fint",1,"parziale","Più assorbente: l’impasto può risultare più denso. Sapore rustico.","Se l’impasto è troppo denso, aggiungi un goccio di liquido."),
+r("pancake","f00","friso",1,"parziale","Senza glutine, ma pancake più fragili.","Cuoci a fuoco medio-basso e gira con delicatezza."),
+r("pancake biscotti","f00","favena",1,"parziale","Assorbe molto, impasto più denso. Contiene tracce di glutine.",""),
+r("biscotti","f00","fmand",1,"parziale","Senza glutine e molto grassa: biscotti più morbidi e friabili.","Impasto delicato: lavoralo il meno possibile e fallo riposare in frigo."),
+r("pancake torta","latte","soia",1,"alta","Sapore leggermente di legume.",""),
+r("pancake torta","latte","avenab",1,"alta","Più dolce, meno proteine.",""),
+r("pancake torta","latte","mandb",1,"alta","Sapore di mandorla, meno proteine.",""),
+r("pancake torta","latte","lsl",1,"alta","",""),
+r("pancake torta biscotti","uovo","lino",1,"parziale","Lega ma non fa montare: struttura più compatta e meno lievitazione.","Prepara il gel: 1 cucchiaio di semi di lino macinati + 3 cucchiai d’acqua per uovo, riposo 10 minuti.",52),
+r("pancake torta biscotti","uovo","chia",1,"parziale","Struttura più compatta e meno lievitazione.","Prepara il gel: 1 cucchiaio di semi di chia + 3 cucchiai d’acqua per uovo, riposo 10 minuti.",55),
+r("pancake torta","uovo","mela",1,"parziale","Aggiunge umidità e dolcezza ma non struttura.","",60),
+r("pancake torta","uovo","banana",1,"parziale","Sapore di banana evidente, impasto più umido.","",50),
+r("pancake torta biscotti","zucchero","canna",1,"alta","Sapore di caramello.",""),
+r("pancake torta biscotti","zucchero","miele",.75,"parziale","Più umido, scurisce prima in cottura.","Abbassa leggermente la temperatura o accorcia la cottura."),
+r("pancake torta","zucchero","acero",.75,"parziale","Più umido, sapore marcato.",""),
+r("pancake torta","burro","evo",.8,"parziale","Sapore deciso, consistenza meno soffice.",""),
+r("pancake torta","burro","semi",.8,"parziale","Impasto più umido e morbido.",""),
+r("pancake torta biscotti","burro","cocco",1,"parziale","Sapore di cocco. Usalo fuso o morbido come il burro.",""),
+r("pancake torta biscotti","burro","marg",1,"alta","",""),
+r("torta","fond","ciol",1,"parziale","Più dolce: valuta di ridurre lo zucchero (non calcolato dal sito).","")];
+// ===== RICETTE: ingredienti [slot, id, quantità, unità], passaggi [testo, slot collegati] =====
+const RC=[
+{id:"pancake",n:"Pancake classici",cat:"pancake",cl:"Pancake",t:20,d:"Facile",s:4,e:"🥞",ing:[["farina","f00",200,"g"],["latte","latte",250,"ml"],["uova","uovo",2,"pcs"],["zucchero","zucchero",30,"g"],["grasso","burro",30,"g"],["lievito","lievito",10,"g"]],
+st:[["Mescola in una ciotola farina, zucchero e lievito.","farina zucchero lievito"],["Sciogli il burro e uniscilo a latte e uova.","grasso latte uova"],["Versa i liquidi sui secchi e mescola brevemente, senza lavorare troppo.",""],["Cuoci un mestolo alla volta in padella calda, circa 2 minuti per lato.",""]]},
+{id:"torta",n:"Torta al cioccolato",cat:"torta",cl:"Torte",t:60,d:"Media",s:8,e:"🍰",ing:[["farina","f00",200,"g"],["zucchero","zucchero",180,"g"],["uova","uovo",3,"pcs"],["grasso","burro",150,"g"],["ciocc","fond",150,"g"],["latte","latte",100,"ml"],["lievito","lievito",8,"g"]],
+st:[["Sciogli cioccolato e burro a bagnomaria e lascia intiepidire.","ciocc grasso"],["Monta uova e zucchero finché diventano chiari e spumosi.","uova zucchero"],["Unisci il cioccolato, poi farina setacciata e lievito alternati al latte.","farina latte lievito"],["Cuoci in uno stampo da 22 cm a 170 °C per 40–45 minuti.",""]]},
+{id:"biscotti",n:"Biscotti di frolla",cat:"biscotti",cl:"Biscotti",t:30,d:"Facile",s:6,e:"🍪",ing:[["farina","f00",250,"g"],["grasso","burro",125,"g"],["zucchero","zucchero",100,"g"],["uova","uovo",1,"pcs"],["lievito","lievito",4,"g"]],
+st:[["Lavora il burro morbido con lo zucchero.","grasso zucchero"],["Aggiungi l’uovo, poi farina e lievito.","uova farina lievito"],["Stendi a 5 mm, taglia i biscotti e cuoci a 180 °C per 12 minuti.",""]]}];
+const CATS=["Dolci","Torte","Biscotti","Pancake","Pane","Pizza","Pasta","Colazioni","Ricette salate","Dessert"];
+// ===== LOGICA =====
+const $=s=>document.querySelector(s),fx=n=>String(n).replace(".",","),rec=id=>RC.find(x=>x.id==id);
+const S={rid:"pancake",sub:{},serv:4,hist:[],open:null,pick:null,last:null,q:"",f:{c:"",t:"",d:""}};
+const rd=(q,u)=>u=="pcs"?Math.round(q*2)/2:q>=100?Math.round(q/5)*5:q>=10?Math.round(q):Math.round(q*2)/2;
+const find=(rc,f,t)=>R.find(x=>x.c.includes(rc.cat)&&x.f==f&&x.t==t);
+function rows(rc,sub,serv){const sc=serv/rc.s;return rc.ing.map(([s,o,q0,u0])=>{const cur=sub[s]||o,rule=cur!=o?find(rc,o,cur):null;let q=q0*sc,u=u0,unv=false;
+if(cur!=o){if(rule)rule.pu?(q=q0*sc*rule.pu,u="g"):q*=rule.k;else unv=true}
+q=rd(q,u);return{s,o,cur,q,u,rule,unv,g:u=="pcs"?q*50:q,sw:cur!=o}})}
+const qs=x=>x.u=="pcs"?`${fx(x.q)} ${x.q==1?"uovo":"uova"}`:`${fx(x.q)} ${x.u}${x.rule&&x.rule.pu?" di gel/purea":""}`;
+function nut(rc,sub,serv){const T=[0,0,0,0,0,0,0];let unv=false;rows(rc,sub,serv).forEach(x=>{I[x.cur][3].forEach((v,k)=>T[k]+=v*x.g/100);unv=unv||x.unv});return{T,unv}}
+function warns(rc,sub,serv){const w=[];rows(rc,sub,serv).filter(x=>x.sw).forEach(x=>{const lbl=`${I[x.o][0]} → ${I[x.cur][0]}`;
+if(x.rule)w.push(x.rule.w?`${lbl}: ${x.rule.w}`:null);else w.push(`${lbl}: nessuna regola verificata per questa ricetta. Quantità lasciata invariata e risultato non garantito: prova in piccolo.`)});
+const ks=Object.keys(sub);if(ks.length>=3)w.push("Più sostituzioni insieme: gli effetti si sommano e il risultato è difficile da prevedere.");
+if(sub.uova&&sub.grasso)w.push("Hai sostituito sia le uova sia il grasso: struttura e sofficità possono cambiare molto.");
+if(sub.farina&&sub.uova&&["friso","fmand"].includes(sub.farina))w.push("Farina senza glutine e uova sostituite: l’impasto potrebbe non legare.");
+return w.filter(Boolean)}
+function ntab(rc,sub,serv){const a=nut(rc,{},serv),b=nut(rc,sub,serv),L=["Calorie (kcal)","Proteine (g)","Carboidrati (g)","di cui zuccheri (g)","Grassi (g)","di cui saturi (g)","Fibre (g)"],ch=Object.keys(sub).length>0;
+const f=(v,d)=>fx(Math.round(v/d*10)/10);
+return`<table class="n"><tr><th>Per porzione</th><th>Originale</th>${ch?"<th>Tua</th>":""}</tr>${L.map((l,k)=>`<tr><td>${l}</td><td>${f(a.T[k],serv)}</td>${ch?`<td>${f(b.T[k],serv)}</td>`:""}</tr>`).join("")}</table>
+<p class="note">Valori stimati con dati medi per 100 g. Totale ricetta: ${Math.round(b.T[0])} kcal.${b.unv?" <b>Stima incompleta:</b> ci sono sostituzioni senza regola verificata (quantità non corrette).":""}</p>`}
+const ph=(id,cls="")=>I[id][5]?`<img src="${I[id][5]}" alt="${I[id][0]}" style="width:3.5rem;height:3.5rem;object-fit:cover;border-radius:12px">`:`<span class="ph ${cls}" role="img" aria-label="${I[id][0]}">${I[id][1]}</span>`;
+const say=t=>{$("#live").textContent=t};
+function toast(t){const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.appendChild(e);say(t);setTimeout(()=>e.remove(),2600)}
+// ===== PAGINE =====
+const cardR=x=>`<a class="card" href="#lab/${x.id}"><div class="ph">${x.e}</div><h3>${x.n}</h3><span class="tag">${x.cl}</span><span class="tag">⏱ ${x.t} min</span><span class="tag">${x.d}</span><p class="note">✨ Personalizzabile nel laboratorio</p></a>`;
+function home(){return`<section class="hero"><div><h1>Non seguire soltanto una ricetta. Creala a modo tuo.</h1><p>Esplora gli ingredienti, prova nuove combinazioni e scopri la versione perfetta per te.</p>
+<form class="srch" id="hs"><input id="hq" type="search" placeholder="Cosa vuoi cucinare oggi?" aria-label="Cerca una ricetta, un ingrediente o una categoria"><button class="pri">Cerca</button></form>
+<a class="btn pri" href="#esplora">Esplora le ricette</a> <a class="btn sec" href="#lab/pancake">Entra nel laboratorio</a></div>
+<div class="big" aria-hidden="true">🌾🥛🥚🧈🍫🍯</div></section>
+<h2>Ricette da personalizzare</h2><div class="grid">${RC.map(cardR).join("")}</div>
+<h2 style="margin-top:2rem">Esplora per categoria</h2><div class="chips">${CATS.map(c=>RC.some(x=>x.cl==c)?`<a class="btn" href="#esplora/${c}">${c}</a>`:`<span class="btn" aria-disabled="true">${c} · presto</span>`).join("")}</div>
+<h2>Come funziona</h2><div class="steps"><div><h3>1. Scegli</h3>Cerca una ricetta e aprila nel laboratorio.</div><div><h3>2. Sperimenta</h3>Tocca un ingrediente sul tavolo e scegli un’alternativa: il sito applica solo regole verificate.</div><div><h3>3. Crea</h3>Ottieni la tua ricetta con quantità, avvisi e valori nutrizionali stimati.</div></div>
+<div class="cta"><h2>Inizia a creare la tua versione</h2><a class="btn" href="#lab/pancake">Apri il laboratorio</a></div>`}
+function resList(){const q=S.q.toLowerCase().trim(),f=S.f;const L=RC.filter(x=>(!q||[x.n,x.cl,...x.ing.map(i=>I[i[1]][0])].join(" ").toLowerCase().includes(q))&&(!f.c||x.cl==f.c)&&(!f.t||x.t<=+f.t)&&(!f.d||x.d==f.d));
+return L.length?`<div class="grid">${L.map(cardR).join("")}</div>`:`<p>Nessuna ricetta trovata. Prova un altro termine o rimuovi i filtri.</p>`}
+function esplora(){return`<h1>Esplora le ricette</h1><div class="srch" id="flt"><input id="q" type="search" value="${S.q}" placeholder="Nome, ingrediente o categoria" aria-label="Cerca">
+<select id="fc" aria-label="Categoria"><option value="">Tutte le categorie</option>${CATS.map(c=>`<option ${S.f.c==c?"selected":""}>${c}</option>`).join("")}</select>
+<select id="ft" aria-label="Tempo"><option value="">Qualsiasi tempo</option><option value="30" ${S.f.t=="30"?"selected":""}>Fino a 30 min</option><option value="60" ${S.f.t=="60"?"selected":""}>Fino a 60 min</option></select>
+<select id="fd" aria-label="Difficoltà"><option value="">Ogni difficoltà</option><option ${S.f.d=="Facile"?"selected":""}>Facile</option><option ${S.f.d=="Media"?"selected":""}>Media</option></select></div><div id="res">${resList()}</div>
+<p class="note">Il filtro per preferenze alimentari non è ancora attivo: richiede più ricette nel catalogo.</p>`}
+function lab(){const rc=rec(S.rid),rw=rows(rc,S.sub,S.serv),w=warns(rc,S.sub,S.serv),ns=Object.keys(S.sub).length;
+return`<h1>Il laboratorio</h1><div class="bar"><b>${rc.n}</b><select id="rsel" aria-label="Ricetta">${RC.map(x=>`<option value="${x.id}" ${x.id==S.rid?"selected":""}>${x.n}</option>`).join("")}</select>
+<span>Porzioni <button data-a="serv" data-v="-1" aria-label="Meno porzioni">−</button> <b>${S.serv}</b> <button data-a="serv" data-v="1" aria-label="Più porzioni">+</button></span><span class="tag">⏱ ${rc.t} min</span><span class="tag">${rc.d}</span>
+<button data-a="undo" ${S.hist.length?"":"disabled"}>↶ Annulla</button><button data-a="reset" ${ns?"":"disabled"}>Ripristina originale</button><button class="sec" data-a="save">Salva</button></div>
+<div class="lab"><div class="table" role="group" aria-label="Tavolo degli ingredienti">${rw.map(x=>`<button class="tile ${x.sw?"chg":""} ${S.last==x.s?"pop":""}" data-a="open" data-s="${x.s}" aria-label="Modifica ${I[x.cur][0]}, ${qs(x)}">${ph(x.cur)}<b>${I[x.cur][0]}</b><span>${qs(x)}</span>${x.sw?`<small>sostituito ✓ (era ${I[x.o][0]})</small>`:`<small class="note">Tocca per cambiare</small>`}</button>`).join("")}</div>
+<aside class="sum" aria-label="Riepilogo"><h2>Riepilogo</h2><p><b>Sostituzioni:</b> ${ns?ns+" applicate":"nessuna (ricetta originale)"}</p><ul>${rw.map(x=>`<li>${qs(x)} ${I[x.cur][0]}${x.sw?" ✎":""}</li>`).join("")}</ul>
+${w.map(t=>`<div class="warn">⚠ ${t}</div>`).join("")}${ntab(rc,S.sub,S.serv)}<p><a class="btn pri" href="#ricetta">Visualizza la ricetta aggiornata</a></p></aside></div>${S.open?drawer(rc):""}`}
+function drawer(rc){const sl=rc.ing.find(x=>x[0]==S.open),cur=S.sub[S.open]||sl[1],x=rows(rc,S.sub,S.serv).find(y=>y.s==S.open),sel=S.pick||cur,rule=sel!=sl[1]?find(rc,sl[1],sel):null;
+let comp,qtxt="";if(sel==cur)comp=sel==sl[1]?"✔ Ingrediente originale della ricetta":"● Selezione attuale";else if(sel==sl[1])comp="✔ Torna all’originale";else if(rule){comp=rule.l=="alta"?"✔ Sostituzione ben supportata":"⚠ Parzialmente compatibile";const q=rd(sl[3]=="pcs"?sl[2]*S.serv/rc.s*(rule.pu?1:1):sl[2]*S.serv/rc.s,sl[3]);qtxt=rule.pu?`${fx(rd(sl[2]*S.serv/rc.s*rule.pu,"g"))} g`:`${fx(rd(sl[2]*S.serv/rc.s*rule.k,sl[3]))} ${sl[3]=="pcs"?"uova":sl[3]}`}else comp="? Non verificata: nessuna regola affidabile. La quantità resta invariata e il risultato non è garantito.";
+return`<div class="drawer" role="dialog" aria-modal="true" aria-label="Alternative per ${GN[I[sl[1]][2]]}"><button data-a="close" style="float:right">✕ Chiudi</button><h2>${GN[I[sl[1]][2]]}</h2><div style="text-align:center;font-size:4.5rem" aria-hidden="true">${I[cur][1]}</div><p style="text-align:center"><b>${I[cur][0]}</b> · ${qs(x)}</p>
+<div class="alts">${Object.keys(I).filter(k=>I[k][2]==I[sl[1]][2]).map(k=>`<button class="alt" data-a="pick" data-id="${k}" aria-pressed="${k==sel}">${ph(k)}<span>${I[k][0]}</span></button>`).join("")}</div>
+<div class="detail"><h3>${I[sel][0]}</h3><p>${I[sel][4]}</p><p><b>${comp}</b></p>${qtxt?`<p>Quantità suggerita: <b>${qtxt}</b></p>`:""}${rule&&rule.w?`<div class="warn">⚠ ${rule.w}</div>`:""}<p class="note">Per 100 g: ${I[sel][3][0]} kcal · ${I[sel][3][4]} g grassi · ${I[sel][3][2]} g carboidrati</p></div>
+<p><button class="pri" data-a="apply" ${sel==cur?"disabled":""}>Applica sostituzione</button> <button data-a="close">Indietro senza modifiche</button></p></div>`}
+function ricetta(){const rc=rec(S.rid),rw=rows(rc,S.sub,S.serv),w=warns(rc,S.sub,S.serv),ns=Object.keys(S.sub).length;
+return`<div class="rc"><h1>La tua ricetta: ${rc.n}${ns?" (variante)":""}</h1><div class="bar np"><a class="btn" href="#lab/${rc.id}">← Torna al laboratorio</a><button data-a="print">🖨 Stampa</button><button class="sec" data-a="save">Salva</button><button data-a="reset" ${ns?"":"disabled"}>Ripristina originale</button></div>
+<p><span class="tag">${S.serv} porzioni</span><span class="tag">⏱ ${rc.t} min</span><span class="tag">${rc.d}</span></p><p class="note">Foto di riferimento: ${rc.e} immagine della ricetta originale, non una simulazione della variante. Nessuna immagine è stata generata.</p>
+${w.map(t=>`<div class="warn">⚠ ${t}</div>`).join("")}<h2>Ingredienti</h2><ul style="list-style:none;padding:0">${rw.map((x,i)=>`<li><label><input type="checkbox"> <b>${qs(x)}</b> ${I[x.cur][0]}${x.sw?` <span class="note">(al posto di ${I[x.o][0]}; originale: ${fx(rec(S.rid).ing[i][2]*S.serv/rc.s)} ${rc.ing[i][3]=="pcs"?"uova":rc.ing[i][3]})</span>`:""}${x.q!=rc.ing[i][2]*S.serv/rc.s&&!x.sw&&x.u=="pcs"?` <span class="note">(arrotondato: usa uova intere)</span>`:""}</label></li>`).join("")}</ul>
+<h2>Procedimento</h2><ol>${rc.st.map(([t,sl])=>{const n=sl.split(" ").map(k=>rw.find(x=>x.s==k)).filter(x=>x&&x.rule&&x.rule.sn).map(x=>x.rule.sn);return`<li>${t}${n.map(m=>`<div class="warn">✎ ${m}</div>`).join("")}</li>`}).join("")}</ol>
+<h2>Valori nutrizionali stimati</h2>${ntab(rc,S.sub,S.serv)}</div>`}
+function mie(){let L=[];try{L=JSON.parse(localStorage.getItem("gu")||"[]")}catch(e){}
+return`<h1>Le mie ricette</h1>${L.length?`<div class="grid">${L.map(x=>`<div class="card"><div class="ph">${rec(x.rid).e}</div><h3>${rec(x.rid).n}</h3><p class="note">${Object.values(x.sub).map(i=>I[i][0]).join(", ")||"Originale"} · ${x.serv} porzioni</p><button class="pri" data-a="load" data-id="${x.id}">Apri</button> <button data-a="del" data-id="${x.id}">Elimina</button></div>`).join("")}</div>`:`<p>Non hai ancora salvato nessuna ricetta. Apri il <a href="#lab/pancake">laboratorio</a>, modifica una ricetta e premi “Salva”.</p>`}
+<p class="note">Il salvataggio avviene solo in questo browser. Account, preferiti, cronologia e sincronizzazione richiedono un backend (es. Supabase) non ancora configurato.</p>`}
+function render(){const [p,a]=location.hash.slice(1).split("/");const m=$("#app");
+if(p=="lab"){if(a&&rec(a)&&a!=S.rid){Object.assign(S,{rid:a,sub:{},hist:[],serv:rec(a).s,open:null})}m.innerHTML=lab()}
+else if(p=="ricetta")m.innerHTML=ricetta();else if(p=="esplora"){if(a)S.f.c=decodeURIComponent(a);m.innerHTML=esplora()}else if(p=="mie")m.innerHTML=mie();else m.innerHTML=home();
+if(p!="lab")window.scrollTo(0,0)}
+addEventListener("hashchange",render);
+const ch=()=>{S.hist.push({...S.sub})};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a,d=b.dataset,rc=rec(S.rid);
+if(a=="open"){S.open=d.s;S.pick=null}
+else if(a=="close"){S.open=null}
+else if(a=="pick")S.pick=d.id;
+else if(a=="apply"){ch();const o=rc.ing.find(x=>x[0]==S.open)[1];if(S.pick==o)delete S.sub[S.open];else S.sub[S.open]=S.pick;S.last=S.open;S.open=null;S.pick=null;toast("Sostituzione applicata")}
+else if(a=="undo"){S.sub=S.hist.pop()||{};S.last=null;toast("Ultima modifica annullata")}
+else if(a=="reset"){ch();S.sub={};S.serv=rc.s;S.last=null;toast("Ricetta originale ripristinata")}
+else if(a=="serv"){S.serv=Math.min(24,Math.max(1,S.serv+ +d.v));S.last=null}
+else if(a=="save"){let L=[];try{L=JSON.parse(localStorage.getItem("gu")||"[]");L.push({id:Date.now()+"",rid:S.rid,sub:S.sub,serv:S.serv});localStorage.setItem("gu",JSON.stringify(L));toast("Salvata in “Le mie ricette” (solo su questo browser)")}catch(x){toast("Salvataggio non disponibile in questo ambiente")}return}
+else if(a=="load"){let L=JSON.parse(localStorage.getItem("gu")||"[]"),x=L.find(y=>y.id==d.id);if(x){Object.assign(S,{rid:x.rid,sub:x.sub,serv:x.serv,hist:[],open:null});location.hash="lab/"+x.rid}return}
+else if(a=="del"){try{let L=JSON.parse(localStorage.getItem("gu")||"[]").filter(y=>y.id!=d.id);localStorage.setItem("gu",JSON.stringify(L))}catch(x){}render();toast("Ricetta eliminata");return}
+else if(a=="print"){try{window.print()}catch(x){toast("Stampa non disponibile qui: usa Ctrl/Cmd+P")}return}
+render()});
+document.addEventListener("input",e=>{const t=e.target;if(t.id=="q"){S.q=t.value;$("#res").innerHTML=resList()}else if(["fc","ft","fd"].includes(t.id)){S.f={c:$("#fc").value,t:$("#ft").value,d:$("#fd").value};$("#res").innerHTML=resList()}
+else if(t.id=="rsel"){Object.assign(S,{rid:t.value,sub:{},hist:[],serv:rec(t.value).s,open:null,last:null});render()}});
+document.addEventListener("submit",e=>{if(e.target.id=="hs"){e.preventDefault();S.q=$("#hq").value;S.f={c:"",t:"",d:""};location.hash="esplora"}});
+document.addEventListener("keydown",e=>{if(e.key=="Escape"&&S.open){S.open=null;render()}});
+render();
+</script></body></html>
