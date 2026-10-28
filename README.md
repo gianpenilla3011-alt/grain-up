@@ -12,6 +12,9 @@ Sito interattivo di ricette personalizzabili: scegli una ricetta, tocca gli ingr
 3. In "Build and deployment" scegli **Deploy from a branch**, branch `main`, cartella `/ (root)`.
 4. Dopo circa un minuto il sito è online su `https://TUONOME.github.io/NOME-REPO/`.
 
+## Il mio frigo
+Pagina `#frigo`: scegli gli ingredienti che hai in casa e trascinali (o toccali) sul piano di lavoro. Il sito mostra quali ricette del catalogo puoi fare, usando le stesse regole di sostituzione del laboratorio, e con un tocco apre la ricetta già con le sostituzioni applicate. Su telefono tieni premuta l'icona un attimo per trascinarla. Frigo e piano di lavoro restano salvati solo nel browser (localStorage).
+
 ## Come estendere il catalogo
 Dati e regole sono all'inizio dello script in `index.html`:
 - `I`: catalogo ingredienti (nome, emoji, gruppo, valori nutrizionali per 100 g, descrizione, URL immagine opzionale come sesto elemento)
