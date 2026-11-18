@@ -28,3 +28,7 @@ Per usare foto reali, aggiungi l'URL come sesto elemento della riga dell'ingredi
 - Salvataggio solo nel browser (localStorage): niente account, preferiti o cronologia
 - Valori nutrizionali: stime con dati medi
 - Nessuna immagine viene generata: la foto del risultato è sempre quella della ricetta originale
+
+### Apri il frigo
+
+Pagina `#apri`: un frigo che apre lo sportello e mostra gli ingredienti scelti (gli stessi di "Il mio frigo"). Sotto compaiono le ricette possibili; per quelle con ingredienti mancanti c'è la lista di cosa comprare, con le quantità.
